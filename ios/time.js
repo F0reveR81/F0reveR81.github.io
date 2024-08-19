@@ -18,9 +18,9 @@ function fun(e) {
       u < 10 ? (u = "00" + u) : u < 100 && (u = "0" + u),
       (document.getElementById(e.id).innerHTML =
         n +
-        "／" +
+        "/" +
         g +
-        "／" +
+        "/" +
         a +
         " " +
         i +
