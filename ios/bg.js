@@ -17,25 +17,7 @@ function hexToRgb(_0x39c969) {
         'b': parseInt(_0x3861ae[0x3], 0x10)
     } : null;
 }
-function updateCurrentTime() {
-var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-  var now = new Date();
-  var hour = now.getHours();
-  var minute = now.getMinutes();
-  var second = now.getSeconds();
-  var dayOfWeek = days[now.getDay()];
 
-  var timeString = hour + ":" + (minute < 10 ? "0" + minute : minute) + ":" + (second < 10 ? "0" + second : second);
-  var colors = ['#ff0000', '#ff4000', '#ff8000', '#ffbf00', '#ffff00', '#bfff00', '#80ff00', '#40ff00', '#00ff00', '#00ff40', '#00ff80', '#00ffbf', '#00ffff', '#00bfff', '#0080ff', '#0040ff', '#0000ff', '#4000ff', '#8000ff', '#bf00ff', '#ff00ff', '#ff00bf', '#ff0080', '#ff0040', '#ff8080', '#ff944d', '#ffaa80', '#ffd480', '#fff4cc', '#ffd8d8', '#f7bdbd', '#ff6666', '#ff4d4d', '#ffcccc', '#ffb3b3', '#ff9999', '#ff3333', '#ff1a1a', '#bf3030', '#804040', '#ff9966', '#ff8533', '#cc6600', '#ffbb33', '#ffcc00', '#ffcc99', '#ffbf80', '#ffad60', '#ff944d'];
-
-  var colorIndex = second % colors.length; 
-
-  document.getElementById("currentTime").innerText = timeString;
-  document.getElementById("currentTime").style.color = colors[colorIndex];
-
-  document.getElementById("currentDay").innerText = dayOfWeek;
-  document.getElementById("currentDay").style.color = colors[colorIndex];
-}
 
 setInterval(updateCurrentTime, 1000);
 function clamp(_0x5baeba, _0x92b62a, _0x49ceb5) {
