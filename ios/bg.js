@@ -18,8 +18,6 @@ function hexToRgb(_0x39c969) {
     } : null;
 }
 
-
-setInterval(updateCurrentTime, 1000);
 function clamp(_0x5baeba, _0x92b62a, _0x49ceb5) {
     return Math['min'](Math[_0x3f7c('0x65')](_0x5baeba, _0x92b62a), _0x49ceb5);
 }
