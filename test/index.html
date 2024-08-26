@@ -1,0 +1,981 @@
+<html>
+
+<head>
+    <title>iOS Panel</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="https://fastly.jsdelivr.net/npm/vant@4/lib/index.css" />
+    <script src="https://fastly.jsdelivr.net/npm/vue@3"></script>
+    <script src="https://fastly.jsdelivr.net/npm/vant@4/lib/vant.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+
+    <style>
+        body {
+            
+            font-family: 'Noto Sans TC', sans-serif;
+            background-size: cover;
+
+            background-position: center center;
+            border-radius: 10px;
+        }
+
+        * {
+            color: #ffffff;
+            
+            -webkit-touch-callout: none;
+            -webkit-user-select: none;
+            user-select: none;
+            /* Non-prefixed version, currently */
+            outline: none;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        nobr {
+            white-space: nowrap;
+            display: flex;
+        }
+
+
+        canvas {
+            position: absolute;
+
+            z-index: -1;
+        }
+
+        .scrollbar {
+            overflow-x: hidden;
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
+            border-radius: 15px;
+        }
+
+        .scrollbar::-webkit-scrollbar {
+            width: 10px;
+            height: 5px;
+
+        }
+
+        .scrollbar::-webkit-scrollbar-track {
+
+            border-radius: 15px;
+        }
+
+        .scrollbar::-webkit-scrollbar-thumb {
+            border-radius: 15px;
+            -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
+            background-color: #B8B8B8;
+        }
+
+
+
+
+        .left {
+
+
+            width: 20%;
+            height: 100%;
+        }
+
+
+        .left1 {
+            border-radius: 10px;
+            width: 100%;
+            height: 70%;
+            margin-top: 15%;
+            margin-left: 15%;
+            background-color: rgba(3, 3, 3, 0.5);
+            ;
+            text-align: center;
+            overflow: auto;
+            border: none;
+            border: 1px solid #FF79BC;
+            box-shadow: 0 0 0px #FF79BC inset, 0 0 5px #FF79BC;
+        }
+
+        .left1 .van-image {
+            position: relative;
+            display: inline-block;
+            margin-top: 15px;
+
+        }
+
+        .left1 .van-button {
+            margin: 10px;
+            text-align: center;
+            font-size: 100%;
+            height: 10%;
+            width: 80%;
+            border-radius: 35px;
+            background-color: #000000;
+            border: none;
+            border: 1px solid #ffffff;
+            box-shadow: 0 0 0px #ffffff inset, 0 0 5px #ffffff;
+            margin-top: 10px;
+
+        }
+
+
+
+        .left2 {
+            border-radius: 10px;
+            width: 100%;
+            height: 15%;
+            margin-top: 15%;
+            margin-left: 15%;
+            background-color: rgba(3, 3, 3, 0.5);
+            display: flex;
+            border: none;
+            border: 1px solid #FF79BC;
+            box-shadow: 0 0 0px #FF79BC inset, 0 0 5px #FF79BC;
+            font: 90%;
+        }
+
+        .left2 .van-image {
+            position: relative;
+            display: inline-block;
+            margin-top: 23.5px;
+            margin-left: 10px;
+        }
+
+        .left2 .font {
+           font-size: 70%;
+            text-align: center;
+            
+            width: 100%;
+            padding-top: 18%;
+        }
+
+       
+
+
+
+        .right {
+            
+            
+            height: 100%;
+            width: 100%;
+            overflow: auto;
+        }
+
+
+
+        .right1 {
+            border-radius: 10px;
+            width: 85%;
+            height: 87%;
+            margin-right: 15%;
+            margin-left: 10%;
+            margin-top: 4%;
+            background-color: rgba(3, 3, 3, 0.5);
+            ;
+           
+            overflow: auto;
+            border: none;
+            border: 1px solid #FF79BC;
+            box-shadow: 0 0 0px #FF79BC inset, 0 0 5px #FF79BC;
+        }
+
+        .ayimgui {
+            background-image: linear-gradient(to right, rgb(0, 0, 0) 0%, rgb(0, 0, 0) 35%, rgb(0, 0, 0) 35%, rgb(0, 0, 0) 100%);
+            position: relative;
+            z-index: 1;
+            height: 100%;
+          
+            overflow: hidden;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+          
+            display: flex;
+        }
+
+        .right .van-button {
+            margin: 10px;
+            text-align: center;
+            
+            height: 35px;
+            width: 50px;
+            border-radius: 5px;
+            background-color: #000000;
+            border: none;
+            border: 1px solid #ffffff;
+            box-shadow: 0 0 0px #ffffff inset, 0 0 5px #ffffff;
+            margin-top: 10px;
+
+
+
+        }
+
+        .van-button {
+            margin: 10px;
+            text-align: center;
+            
+            width: 100px;
+            border-radius: 5px;
+            background-color: #000000;
+            border: none;
+            border: 1px solid #ffffff;
+            box-shadow: 0 0 0px #ffffff inset, 0 0 5px #ffffff;
+
+            margin-top: 25px;
+            margin-left: 25px;
+
+
+        }
+
+        .van-notify {
+            z-index: 99;
+            position: fixed;
+        }
+
+        
+        .van-cell {
+            margin: 3%;
+           
+            font-size: 100%;
+            width: 95%;
+            border-radius: 5px;
+            background-color: #000000;
+            border: none;
+            border: 1px solid #ffffff;
+            box-shadow: 0 0 0px #ffffff inset, 0 0 5px #ffffff;
+            
+        }
+
+        .van-field__control {
+            display: block;
+            box-sizing: border-box;
+            width: 100%;
+            min-width: 0;
+            margin: 0;
+            padding: 0;
+            color: white;
+            line-height: inherit;
+            text-align: left;
+            background-color: transparent;
+            border: 0;
+            resize: none;
+            -webkit-user-select: auto;
+            user-select: auto;
+        }
+
+        select {
+            height: 30px;
+            margin: 10px;
+            text-align: center;
+            font-size: 13px;
+            width: 100px;
+            border-radius: 5px;
+            background-color: #000000;
+            border: none;
+            border: 1px solid #ffffff;
+            box-shadow: 0 0 0px #ffffff inset, 0 0 5px #ffffff;
+
+            margin-top: 25px;
+            margin-left: 25px;
+        }
+
+        .colorcc {
+            animation: color-change 5s infinite;
+            font-size: 18px;
+        }
+
+        .colorcc1 {
+            animation: color-change 4s infinite;
+            font-size: 18px;
+        }
+
+        .colorcc2 {
+            animation: color-change 3s infinite;
+            font-size: 18px;
+        }
+
+        .colorcc3 {
+            animation: color-change 2s infinite;
+            font-size: 18px;
+        }
+
+        .rainbow-text {
+            display: inline-block;
+
+        }
+
+        @keyframes color-change {
+
+            0%,
+            100% {
+                color: #ff7675;
+            }
+
+            25% {
+                color: #74b9ff;
+            }
+
+            50% {
+                color: #55efc4;
+            }
+
+            75% {
+                color: #ffeaa7;
+            }
+        }
+
+        .rainbow {
+            animation: rainbow 1s linear infinite;
+        }
+    </style>
+
+
+
+
+</head>
+<script src="https://w1nterrrrr.github.io/ios/alert.js"></script>
+<script src="https://w1nterrrrr.github.io/ios/time.js"></script>
+
+<body>
+ <!-- 音頻元素 -->
+ <audio id="audio1">
+    <source src="sound/1.MP3" type="audio/mpeg">
+    您的瀏覽器不支持 audio 元素。
+</audio>
+
+
+    <div id="app">
+        <div class="ayimgui">
+            <div id="particles-js"></div>
+
+                <div class="left">
+                    <div class="left1">
+                        <van-image width="90" height="90" src="https://w1nterrrrr.github.io/ios/logoo.png" />
+                        </van-image><br>
+                        <van-button @click="changeTab('1')" size="small"> 金冬天</van-button><br>
+                        
+                    </div>
+                    <div class="left2">
+
+                        <div class="font">
+                           
+                            <font id="show_time"></font>
+                        </div>
+                    </div>
+                </div>
+                <div class="right">
+                    <div class="right1">
+                        <div v-show="tabValue==='1'">
+                            <van-cell center title="我愛你">
+                                <template #right-icon>
+                                    <van-button size="small" color="#var(--color-a)" onclick="s100s()"><van-icon name="play-circle-o"size="25" onclick="toggleAudio('audio1')" /></van-button><br>
+                                    <van-button size="small" color="#var(--color-a)" onclick="s101s()"><van-icon name="share"size="25" onclick="shareMusic()"/></van-button>
+                                </template>
+                              </van-cell>
+
+                            
+                            
+                          
+
+                        </div>
+                        <div v-show="tabValue === '2'">
+                            <br>
+                            <p>
+                                <font style="color: #ff4060;">&nbsp;&nbsp;&nbsp;&nbsp;（選一個開即可）</font>
+                            </p>
+                            <van-button size="small" color="#var(--color-a)" onclick="so90()">天線V1 (登入)</van-button>
+                            <van-button size="small" color="#var(--color-a)" onclick="so91()">天線V2 (登入)</van-button>
+                            <van-button size="small" color="#var(--color-a)" onclick="so92()">天線V3 (登入)</van-button>
+
+                        </div>
+                        <div v-show="tabValue === '3'">
+
+                            <p>
+                                <font style="color:#ff00aa">&nbsp;&nbsp;&nbsp;&nbsp;跑速</font>
+                            </p>
+                            <van-button size="small" color="#var(--color-a)" onclick="s05()">跑速bypass (登入)</van-button>
+                            <van-button size="small" color="#var(--color-a)" onclick="s06()">跑速 (遊戲)</van-button>
+                            <hr size="1" style="color:var(--color-f)">
+                            <p>
+                                <font style="color:#ff00aa">&nbsp;&nbsp;&nbsp;&nbsp;速度</font>
+                            </p>
+                            <p>
+                                <font style="color: #ff4060;">&nbsp;&nbsp;&nbsp;&nbsp;（如果不知道如何使用，請不要使用）</font>
+                            </p>
+                            <van-button size="small" color="#var(--color-a)" onclick="so01()">搜索 (登入)</van-button>
+                            <van-button size="small" color="#var(--color-a)" onclick="so03()">復原</van-button><br>
+
+                            <van-button size="small" color="#var(--color-a)" onclick="so06()">2X (遊戲)</van-button>
+                            <van-button size="small" color="#var(--color-a)" onclick="so02()">10X (遊戲)</van-button>
+                            <van-button size="small" color="#var(--color-a)" onclick="so05()">50X (遊戲)</van-button>
+                            <hr size="1" style="color:var(--color-f)">
+                            <p>
+                                <font style="color:#ff00aa">&nbsp;&nbsp;&nbsp;&nbsp;其他</font>
+                            </p>
+                            <van-button size="small" color="#var(--color-a)" onclick="wall()">穿牆 (遊戲)</van-button>
+                        </div>
+                        <div v-show="tabValue === '4'">
+                            <div class="right11">
+                                <font>遊戲名稱：<div class="colorcc" style="display:inline;">Free Fire</div><br>
+                                    <font>輔助類型：<div class="colorcc1" style="display:inline;">高級VIP輔助</div><br>
+                                        <font>Bundle&nbsp; ：<div class="colorcc2" style="display:inline;" class="expires">com.dts.freefireth</div><br>
+                                            <font>到期日期：<div class="colorcc2" style="display:inline;" class="expires">{{expires}}</div><br>
+                                                <van-button size="small" color="#var(--color-a)" onclick="DC()">
+                                                    <van-image width="30" height="30" src="https://w1nterrrrr.github.io/ios/DC.png" />
+                                                </van-button>
+                                                <van-button size="small" color="#var(--color-a)" onclick="YT()">
+                                                    <van-image width="30" height="30" src="https://w1nterrrrr.github.io/ios/YT.png" />
+                                                </van-button>
+
+
+
+                            </div>
+                            <hr>
+                            <div style="margin-top:5px;margin:5px;">Verison 1.0.0</div>
+
+                            <br>
+
+                            <br>
+                        </div>
+
+                    </div>
+                </div>
+        </div>
+    </div>
+    </template>
+    </div>
+    </div>
+    <script>
+        var _0x29b3 = ['user_time', 'api_time', 'USERIP', 'onload', 'showToast', 'success', 'assign', 'fromCharCode', 'createElement', '数据过期(2.0)', 'indexOf', '0123456789abcdef', 'toString', 'createApp', 'concat', 'wanggou', 'charAt', 'trim', 'login_data', 'length', 'loaded', 'setItem', 'get_ip', 'http://www.wigyyds.com/api/loginJavaScript', 'type', 'wig_km', 'readyState', 'login', 'use', 'mount', 'script', 'msg', 'code', 'floor', 'join', 'substr', 'now', 'getTime', 'charCodeAt', 'bscard', 'getItem', 'http://www.wigyyds.com/api/cityjson?ie=utf-8', 'wig_login_4_0', '10001', 'imei=', 'appendChild', '10002', 'bsok', 'undefined', 'Lazyload', 'onreadystatechange', 'wigkmlogin'];
+        var _0x53ac = function(_0x29b316, _0x53acb5) {
+            _0x29b316 = _0x29b316 - 0x0;
+            var _0x556d82 = _0x29b3[_0x29b316];
+            return _0x556d82;
+        };
+        let _keyStr = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=';
+        const appConfig = {
+            'uri': _0x53ac('0x17'),
+            'appid': '25190',
+            'appsecret': 'ogPyhHzIoyaixJm',
+            'imei': null
+        };
+
+        function md5(_0x361649) {
+            function _0x42d3b6(_0x433f70, _0x2c2fda) {
+                var _0x51469f = (_0x433f70 & 0xffff) + (_0x2c2fda & 0xffff);
+                var _0x15c272 = (_0x433f70 >> 0x10) + (_0x2c2fda >> 0x10) + (_0x51469f >> 0x10);
+                return _0x15c272 << 0x10 | _0x51469f & 0xffff;
+            }
+
+            function _0x8b083f(_0x58fa40, _0x4226e9) {
+                return _0x58fa40 << _0x4226e9 | _0x58fa40 >>> 0x20 - _0x4226e9;
+            }
+
+            function _0x3c7c00(_0x3647c7, _0x3e2ce3, _0x24d2db, _0x33c3a7, _0x3d301e, _0x151063) {
+                return _0x42d3b6(_0x8b083f(_0x42d3b6(_0x42d3b6(_0x3e2ce3, _0x3647c7), _0x42d3b6(_0x33c3a7, _0x151063)), _0x3d301e), _0x24d2db);
+            }
+
+            function _0x49812c(_0xa2b85e, _0x5214b1, _0x199322, _0x205fd0, _0x2bf598, _0x4cc8af, _0x2709be) {
+                return _0x3c7c00(_0x5214b1 & _0x199322 | ~_0x5214b1 & _0x205fd0, _0xa2b85e, _0x5214b1, _0x2bf598, _0x4cc8af, _0x2709be);
+            }
+
+            function _0x281830(_0xb40c50, _0x2db2dc, _0x5ed4c8, _0x294bd9, _0x2af51e, _0x15e4a1, _0x12a833) {
+                return _0x3c7c00(_0x2db2dc & _0x294bd9 | _0x5ed4c8 & ~_0x294bd9, _0xb40c50, _0x2db2dc, _0x2af51e, _0x15e4a1, _0x12a833);
+            }
+
+            function _0x1c0f10(_0x16ec9b, _0x5a64be, _0x250553, _0x388daa, _0x363968, _0x40d04c, _0x43d190) {
+                return _0x3c7c00(_0x5a64be ^ _0x250553 ^ _0x388daa, _0x16ec9b, _0x5a64be, _0x363968, _0x40d04c, _0x43d190);
+            }
+
+            function _0x41b820(_0x5056dd, _0x30ab90, _0x4de042, _0x4be16e, _0x4dd764, _0x2854af, _0x28a618) {
+                return _0x3c7c00(_0x4de042 ^ (_0x30ab90 | ~_0x4be16e), _0x5056dd, _0x30ab90, _0x4dd764, _0x2854af, _0x28a618);
+            }
+
+            function _0x5b0128(_0x4bb463, _0x5c9ea3) {
+                _0x4bb463[_0x5c9ea3 >> 0x5] |= 0x80 << _0x5c9ea3 % 0x20;
+                _0x4bb463[(_0x5c9ea3 + 0x40 >>> 0x9 << 0x4) + 0xe] = _0x5c9ea3;
+                var _0x150ad3;
+                var _0x340d95;
+                var _0x40530a;
+                var _0x311b45;
+                var _0x3bdbb0;
+                var _0x571915 = 0x67452301;
+                var _0x3497e6 = -0x10325477;
+                var _0x449650 = -0x67452302;
+                var _0x354e7f = 0x10325476;
+                for (_0x150ad3 = 0x0; _0x150ad3 < _0x4bb463[_0x53ac('0x13')]; _0x150ad3 += 0x10) {
+                    _0x340d95 = _0x571915;
+                    _0x40530a = _0x3497e6;
+                    _0x311b45 = _0x449650;
+                    _0x3bdbb0 = _0x354e7f;
+                    _0x571915 = _0x49812c(_0x571915, _0x3497e6, _0x449650, _0x354e7f, _0x4bb463[_0x150ad3], 0x7, -0x28955b88);
+                    _0x354e7f = _0x49812c(_0x354e7f, _0x571915, _0x3497e6, _0x449650, _0x4bb463[_0x150ad3 + 0x1], 0xc, -0x173848aa);
+                    _0x449650 = _0x49812c(_0x449650, _0x354e7f, _0x571915, _0x3497e6, _0x4bb463[_0x150ad3 + 0x2], 0x11, 0x242070db);
+                    _0x3497e6 = _0x49812c(_0x3497e6, _0x449650, _0x354e7f, _0x571915, _0x4bb463[_0x150ad3 + 0x3], 0x16, -0x3e423112);
+                    _0x571915 = _0x49812c(_0x571915, _0x3497e6, _0x449650, _0x354e7f, _0x4bb463[_0x150ad3 + 0x4], 0x7, -0xa83f051);
+                    _0x354e7f = _0x49812c(_0x354e7f, _0x571915, _0x3497e6, _0x449650, _0x4bb463[_0x150ad3 + 0x5], 0xc, 0x4787c62a);
+                    _0x449650 = _0x49812c(_0x449650, _0x354e7f, _0x571915, _0x3497e6, _0x4bb463[_0x150ad3 + 0x6], 0x11, -0x57cfb9ed);
+                    _0x3497e6 = _0x49812c(_0x3497e6, _0x449650, _0x354e7f, _0x571915, _0x4bb463[_0x150ad3 + 0x7], 0x16, -0x2b96aff);
+                    _0x571915 = _0x49812c(_0x571915, _0x3497e6, _0x449650, _0x354e7f, _0x4bb463[_0x150ad3 + 0x8], 0x7, 0x698098d8);
+                    _0x354e7f = _0x49812c(_0x354e7f, _0x571915, _0x3497e6, _0x449650, _0x4bb463[_0x150ad3 + 0x9], 0xc, -0x74bb0851);
+                    _0x449650 = _0x49812c(_0x449650, _0x354e7f, _0x571915, _0x3497e6, _0x4bb463[_0x150ad3 + 0xa], 0x11, -0xa44f);
+                    _0x3497e6 = _0x49812c(_0x3497e6, _0x449650, _0x354e7f, _0x571915, _0x4bb463[_0x150ad3 + 0xb], 0x16, -0x76a32842);
+                    _0x571915 = _0x49812c(_0x571915, _0x3497e6, _0x449650, _0x354e7f, _0x4bb463[_0x150ad3 + 0xc], 0x7, 0x6b901122);
+                    _0x354e7f = _0x49812c(_0x354e7f, _0x571915, _0x3497e6, _0x449650, _0x4bb463[_0x150ad3 + 0xd], 0xc, -0x2678e6d);
+                    _0x449650 = _0x49812c(_0x449650, _0x354e7f, _0x571915, _0x3497e6, _0x4bb463[_0x150ad3 + 0xe], 0x11, -0x5986bc72);
+                    _0x3497e6 = _0x49812c(_0x3497e6, _0x449650, _0x354e7f, _0x571915, _0x4bb463[_0x150ad3 + 0xf], 0x16, 0x49b40821);
+                    _0x571915 = _0x281830(_0x571915, _0x3497e6, _0x449650, _0x354e7f, _0x4bb463[_0x150ad3 + 0x1], 0x5, -0x9e1da9e);
+                    _0x354e7f = _0x281830(_0x354e7f, _0x571915, _0x3497e6, _0x449650, _0x4bb463[_0x150ad3 + 0x6], 0x9, -0x3fbf4cc0);
+                    _0x449650 = _0x281830(_0x449650, _0x354e7f, _0x571915, _0x3497e6, _0x4bb463[_0x150ad3 + 0xb], 0xe, 0x265e5a51);
+                    _0x3497e6 = _0x281830(_0x3497e6, _0x449650, _0x354e7f, _0x571915, _0x4bb463[_0x150ad3], 0x14, -0x16493856);
+                    _0x571915 = _0x281830(_0x571915, _0x3497e6, _0x449650, _0x354e7f, _0x4bb463[_0x150ad3 + 0x5], 0x5, -0x29d0efa3);
+                    _0x354e7f = _0x281830(_0x354e7f, _0x571915, _0x3497e6, _0x449650, _0x4bb463[_0x150ad3 + 0xa], 0x9, 0x2441453);
+                    _0x449650 = _0x281830(_0x449650, _0x354e7f, _0x571915, _0x3497e6, _0x4bb463[_0x150ad3 + 0xf], 0xe, -0x275e197f);
+                    _0x3497e6 = _0x281830(_0x3497e6, _0x449650, _0x354e7f, _0x571915, _0x4bb463[_0x150ad3 + 0x4], 0x14, -0x182c0438);
+                    _0x571915 = _0x281830(_0x571915, _0x3497e6, _0x449650, _0x354e7f, _0x4bb463[_0x150ad3 + 0x9], 0x5, 0x21e1cde6);
+                    _0x354e7f = _0x281830(_0x354e7f, _0x571915, _0x3497e6, _0x449650, _0x4bb463[_0x150ad3 + 0xe], 0x9, -0x3cc8f82a);
+                    _0x449650 = _0x281830(_0x449650, _0x354e7f, _0x571915, _0x3497e6, _0x4bb463[_0x150ad3 + 0x3], 0xe, -0xb2af279);
+                    _0x3497e6 = _0x281830(_0x3497e6, _0x449650, _0x354e7f, _0x571915, _0x4bb463[_0x150ad3 + 0x8], 0x14, 0x455a14ed);
+                    _0x571915 = _0x281830(_0x571915, _0x3497e6, _0x449650, _0x354e7f, _0x4bb463[_0x150ad3 + 0xd], 0x5, -0x561c16fb);
+                    _0x354e7f = _0x281830(_0x354e7f, _0x571915, _0x3497e6, _0x449650, _0x4bb463[_0x150ad3 + 0x2], 0x9, -0x3105c08);
+                    _0x449650 = _0x281830(_0x449650, _0x354e7f, _0x571915, _0x3497e6, _0x4bb463[_0x150ad3 + 0x7], 0xe, 0x676f02d9);
+                    _0x3497e6 = _0x281830(_0x3497e6, _0x449650, _0x354e7f, _0x571915, _0x4bb463[_0x150ad3 + 0xc], 0x14, -0x72d5b376);
+                    _0x571915 = _0x1c0f10(_0x571915, _0x3497e6, _0x449650, _0x354e7f, _0x4bb463[_0x150ad3 + 0x5], 0x4, -0x5c6be);
+                    _0x354e7f = _0x1c0f10(_0x354e7f, _0x571915, _0x3497e6, _0x449650, _0x4bb463[_0x150ad3 + 0x8], 0xb, -0x788e097f);
+                    _0x449650 = _0x1c0f10(_0x449650, _0x354e7f, _0x571915, _0x3497e6, _0x4bb463[_0x150ad3 + 0xb], 0x10, 0x6d9d6122);
+                    _0x3497e6 = _0x1c0f10(_0x3497e6, _0x449650, _0x354e7f, _0x571915, _0x4bb463[_0x150ad3 + 0xe], 0x17, -0x21ac7f4);
+                    _0x571915 = _0x1c0f10(_0x571915, _0x3497e6, _0x449650, _0x354e7f, _0x4bb463[_0x150ad3 + 0x1], 0x4, -0x5b4115bc);
+                    _0x354e7f = _0x1c0f10(_0x354e7f, _0x571915, _0x3497e6, _0x449650, _0x4bb463[_0x150ad3 + 0x4], 0xb, 0x4bdecfa9);
+                    _0x449650 = _0x1c0f10(_0x449650, _0x354e7f, _0x571915, _0x3497e6, _0x4bb463[_0x150ad3 + 0x7], 0x10, -0x944b4a0);
+                    _0x3497e6 = _0x1c0f10(_0x3497e6, _0x449650, _0x354e7f, _0x571915, _0x4bb463[_0x150ad3 + 0xa], 0x17, -0x41404390);
+                    _0x571915 = _0x1c0f10(_0x571915, _0x3497e6, _0x449650, _0x354e7f, _0x4bb463[_0x150ad3 + 0xd], 0x4, 0x289b7ec6);
+                    _0x354e7f = _0x1c0f10(_0x354e7f, _0x571915, _0x3497e6, _0x449650, _0x4bb463[_0x150ad3], 0xb, -0x155ed806);
+                    _0x449650 = _0x1c0f10(_0x449650, _0x354e7f, _0x571915, _0x3497e6, _0x4bb463[_0x150ad3 + 0x3], 0x10, -0x2b10cf7b);
+                    _0x3497e6 = _0x1c0f10(_0x3497e6, _0x449650, _0x354e7f, _0x571915, _0x4bb463[_0x150ad3 + 0x6], 0x17, 0x4881d05);
+                    _0x571915 = _0x1c0f10(_0x571915, _0x3497e6, _0x449650, _0x354e7f, _0x4bb463[_0x150ad3 + 0x9], 0x4, -0x262b2fc7);
+                    _0x354e7f = _0x1c0f10(_0x354e7f, _0x571915, _0x3497e6, _0x449650, _0x4bb463[_0x150ad3 + 0xc], 0xb, -0x1924661b);
+                    _0x449650 = _0x1c0f10(_0x449650, _0x354e7f, _0x571915, _0x3497e6, _0x4bb463[_0x150ad3 + 0xf], 0x10, 0x1fa27cf8);
+                    _0x3497e6 = _0x1c0f10(_0x3497e6, _0x449650, _0x354e7f, _0x571915, _0x4bb463[_0x150ad3 + 0x2], 0x17, -0x3b53a99b);
+                    _0x571915 = _0x41b820(_0x571915, _0x3497e6, _0x449650, _0x354e7f, _0x4bb463[_0x150ad3], 0x6, -0xbd6ddbc);
+                    _0x354e7f = _0x41b820(_0x354e7f, _0x571915, _0x3497e6, _0x449650, _0x4bb463[_0x150ad3 + 0x7], 0xa, 0x432aff97);
+                    _0x449650 = _0x41b820(_0x449650, _0x354e7f, _0x571915, _0x3497e6, _0x4bb463[_0x150ad3 + 0xe], 0xf, -0x546bdc59);
+                    _0x3497e6 = _0x41b820(_0x3497e6, _0x449650, _0x354e7f, _0x571915, _0x4bb463[_0x150ad3 + 0x5], 0x15, -0x36c5fc7);
+                    _0x571915 = _0x41b820(_0x571915, _0x3497e6, _0x449650, _0x354e7f, _0x4bb463[_0x150ad3 + 0xc], 0x6, 0x655b59c3);
+                    _0x354e7f = _0x41b820(_0x354e7f, _0x571915, _0x3497e6, _0x449650, _0x4bb463[_0x150ad3 + 0x3], 0xa, -0x70f3336e);
+                    _0x449650 = _0x41b820(_0x449650, _0x354e7f, _0x571915, _0x3497e6, _0x4bb463[_0x150ad3 + 0xa], 0xf, -0x100b83);
+                    _0x3497e6 = _0x41b820(_0x3497e6, _0x449650, _0x354e7f, _0x571915, _0x4bb463[_0x150ad3 + 0x1], 0x15, -0x7a7ba22f);
+                    _0x571915 = _0x41b820(_0x571915, _0x3497e6, _0x449650, _0x354e7f, _0x4bb463[_0x150ad3 + 0x8], 0x6, 0x6fa87e4f);
+                    _0x354e7f = _0x41b820(_0x354e7f, _0x571915, _0x3497e6, _0x449650, _0x4bb463[_0x150ad3 + 0xf], 0xa, -0x1d31920);
+                    _0x449650 = _0x41b820(_0x449650, _0x354e7f, _0x571915, _0x3497e6, _0x4bb463[_0x150ad3 + 0x6], 0xf, -0x5cfebcec);
+                    _0x3497e6 = _0x41b820(_0x3497e6, _0x449650, _0x354e7f, _0x571915, _0x4bb463[_0x150ad3 + 0xd], 0x15, 0x4e0811a1);
+                    _0x571915 = _0x41b820(_0x571915, _0x3497e6, _0x449650, _0x354e7f, _0x4bb463[_0x150ad3 + 0x4], 0x6, -0x8ac817e);
+                    _0x354e7f = _0x41b820(_0x354e7f, _0x571915, _0x3497e6, _0x449650, _0x4bb463[_0x150ad3 + 0xb], 0xa, -0x42c50dcb);
+                    _0x449650 = _0x41b820(_0x449650, _0x354e7f, _0x571915, _0x3497e6, _0x4bb463[_0x150ad3 + 0x2], 0xf, 0x2ad7d2bb);
+                    _0x3497e6 = _0x41b820(_0x3497e6, _0x449650, _0x354e7f, _0x571915, _0x4bb463[_0x150ad3 + 0x9], 0x15, -0x14792c6f);
+                    _0x571915 = _0x42d3b6(_0x571915, _0x340d95);
+                    _0x3497e6 = _0x42d3b6(_0x3497e6, _0x40530a);
+                    _0x449650 = _0x42d3b6(_0x449650, _0x311b45);
+                    _0x354e7f = _0x42d3b6(_0x354e7f, _0x3bdbb0);
+                }
+                return [_0x571915, _0x3497e6, _0x449650, _0x354e7f];
+            }
+
+            function _0x18fc9b(_0x58b417) {
+                var _0x495785;
+                var _0x568b38 = '';
+                var _0x9087a8 = _0x58b417[_0x53ac('0x13')] * 0x20;
+                for (_0x495785 = 0x0; _0x495785 < _0x9087a8; _0x495785 += 0x8) {
+                    _0x568b38 += String['fromCharCode'](_0x58b417[_0x495785 >> 0x5] >>> _0x495785 % 0x20 & 0xff);
+                }
+                return _0x568b38;
+            }
+
+            function _0x5854f4(_0x3b49f6) {
+                var _0x574a06;
+                var _0x1b458d = [];
+                _0x1b458d[(_0x3b49f6[_0x53ac('0x13')] >> 0x2) - 0x1] = undefined;
+                for (_0x574a06 = 0x0; _0x574a06 < _0x1b458d['length']; _0x574a06 += 0x1) {
+                    _0x1b458d[_0x574a06] = 0x0;
+                }
+                var _0x2ba35c = _0x3b49f6[_0x53ac('0x13')] * 0x8;
+                for (_0x574a06 = 0x0; _0x574a06 < _0x2ba35c; _0x574a06 += 0x8) {
+                    _0x1b458d[_0x574a06 >> 0x5] |= (_0x3b49f6[_0x53ac('0x26')](_0x574a06 / 0x8) & 0xff) << _0x574a06 % 0x20;
+                }
+                return _0x1b458d;
+            }
+
+            function _0x3203dd(_0x29d49e) {
+                return _0x18fc9b(_0x5b0128(_0x5854f4(_0x29d49e), _0x29d49e[_0x53ac('0x13')] * 0x8));
+            }
+
+            function _0x27cc70(_0x5b4c6c, _0x42b1dd) {
+                var _0x4c489b;
+                var _0x390dae = _0x5854f4(_0x5b4c6c);
+                var _0x5bfc37 = [];
+                var _0x50c7b0 = [];
+                var _0x2d1f60;
+                _0x5bfc37[0xf] = _0x50c7b0[0xf] = undefined;
+                if (_0x390dae[_0x53ac('0x13')] > 0x10) {
+                    _0x390dae = _0x5b0128(_0x390dae, _0x5b4c6c['length'] * 0x8);
+                }
+                for (_0x4c489b = 0x0; _0x4c489b < 0x10; _0x4c489b += 0x1) {
+                    _0x5bfc37[_0x4c489b] = _0x390dae[_0x4c489b] ^ 0x36363636;
+                    _0x50c7b0[_0x4c489b] = _0x390dae[_0x4c489b] ^ 0x5c5c5c5c;
+                }
+                _0x2d1f60 = _0x5b0128(_0x5bfc37[_0x53ac('0xe')](_0x5854f4(_0x42b1dd)), 0x200 + _0x42b1dd[_0x53ac('0x13')] * 0x8);
+                return _0x18fc9b(_0x5b0128(_0x50c7b0[_0x53ac('0xe')](_0x2d1f60), 0x200 + 0x80));
+            }
+
+            function _0x5613be(_0x24dc6c) {
+                var _0x199afa = _0x53ac('0xb');
+                var _0x222976 = '';
+                var _0x1850fc;
+                var _0x273dfc;
+                for (_0x273dfc = 0x0; _0x273dfc < _0x24dc6c['length']; _0x273dfc += 0x1) {
+                    _0x1850fc = _0x24dc6c[_0x53ac('0x26')](_0x273dfc);
+                    _0x222976 += _0x199afa['charAt'](_0x1850fc >>> 0x4 & 0xf) + _0x199afa[_0x53ac('0x10')](_0x1850fc & 0xf);
+                }
+                return _0x222976;
+            }
+
+            function _0x569437(_0x252175) {
+                return unescape(encodeURIComponent(_0x252175));
+            }
+
+            function _0x14caaf(_0x278101) {
+                return _0x3203dd(_0x569437(_0x278101));
+            }
+
+            function _0x5c5681(_0x44153a) {
+                return _0x5613be(_0x14caaf(_0x44153a));
+            }
+
+            function _0x45d42e(_0x2d822e, _0x526eed) {
+                return _0x27cc70(_0x569437(_0x2d822e), _0x569437(_0x526eed));
+            }
+
+            function _0x25d5f7(_0x3beb3c, _0x5f0d6b) {
+                return _0x5613be(_0x45d42e(_0x3beb3c, _0x5f0d6b));
+            }
+
+            function _0x272963(_0x3b3439, _0xf33183, _0x11ebec) {
+                if (!_0xf33183) {
+                    if (!_0x11ebec) {
+                        return _0x5c5681(_0x3b3439);
+                    }
+                    return _0x14caaf(_0x3b3439);
+                }
+                if (!_0x11ebec) {
+                    return _0x25d5f7(_0xf33183, _0x3b3439);
+                }
+                return _0x45d42e(_0xf33183, _0x3b3439);
+            }
+            return _0x272963(_0x361649);
+        }
+
+        function getDataByJsonP(_0x1cf98e, _0x3ea622, _0x268c55) {
+            return new Promise((_0x85d1fb, _0x5762c5) => {
+                const _0x5e5885 = document[_0x53ac('0x8')](_0x53ac('0x1e'));
+                _0x5e5885['src'] = _0x3ea622;
+                _0x5e5885[_0x53ac('0x18')] = 'text/javascript';
+                _0x5e5885['id'] = _0x1cf98e;
+                _0x5e5885[_0x53ac('0x3')] = _0x5e5885[_0x53ac('0x32')] = function() {
+                    if (!this[_0x53ac('0x1a')] || this['readyState'] === _0x53ac('0x14') || this['readyState'] === 'complete') {
+                        _0x85d1fb(window[_0x268c55]);
+                    }
+                };
+                _0x5e5885['onerror'] = function(_0x54405c) {
+                    _0x5762c5(_0x54405c);
+                };
+                const _0x5473b9 = document['querySelector']('head');
+                const _0x434e7f = document['querySelector']('#' + _0x1cf98e);
+                if (!_0x5473b9) {
+                    throw new Error('错误\x20-\x20文档中没有head标签');
+                }
+                if (_0x434e7f) {
+                    _0x434e7f['remove']();
+                }
+                _0x5473b9[_0x53ac('0x2d')](_0x5e5885);
+            });
+        }
+
+        function getIp(_0x6fe5ab = _0x53ac('0x29'), _0x189d21 = _0x53ac('0x2')) {
+            return getDataByJsonP(_0x53ac('0x16'), _0x6fe5ab, _0x189d21);
+        }
+
+        function machineCode() {
+            return new Promise(async (_0x208dbe, _0xba04cb) => {
+                try {
+                    let _0x5944c9 = localStorage[_0x53ac('0x28')]('wig_login_4_0');
+                    if (!_0x5944c9) {
+                        _IP = await getIp();
+                        _0x5944c9 = Date[_0x53ac('0x24')]() / 0x3e8 + '-' + _IP + (Math[_0x53ac('0x21')](Math['random']() * (0x3e7 - 0x64 + 0x1)) + 0x64) + _0x53ac('0x33');
+                        localStorage[_0x53ac('0x15')](_0x53ac('0x2a'), _0x5944c9);
+                    }
+                    _0x208dbe('' + _0x5944c9);
+                } catch (_0x168bf4) {
+                    _0xba04cb(_0x168bf4);
+                }
+            });
+        }
+
+        function rc4(_0x2c0345, _0x2781f5, _0x213ffb) {
+            if (_0x213ffb == ![]) {
+                _0x2781f5 = hexCharCodeToStr(_0x2781f5);
+            }
+            let _0x23a5aa = '';
+            let _0x46214f = [];
+            let _0x2d6d3d = [];
+            let _0x2e3432 = _0x2c0345[_0x53ac('0x13')];
+            let _0x2303ab = _0x2781f5['length'];
+            for (let _0x4d750e = 0x0; _0x4d750e < 0x100; _0x4d750e++) {
+                _0x46214f[_0x4d750e] = _0x2c0345[_0x4d750e % _0x2e3432][_0x53ac('0x26')](0x0);
+                _0x2d6d3d[_0x4d750e] = _0x4d750e;
+            }
+            var _0x4b269a = 0x0;
+            for (let _0x428403 = _0x4b269a; _0x4b269a < 0x100; _0x4b269a++) {
+                _0x428403 = (_0x428403 + _0x2d6d3d[_0x4b269a] + _0x46214f[_0x4b269a]) % 0x100;
+                let _0x102861 = _0x2d6d3d[_0x4b269a];
+                _0x2d6d3d[_0x4b269a] = _0x2d6d3d[_0x428403];
+                _0x2d6d3d[_0x428403] = _0x102861;
+            }
+            var _0x4b269a = 0x0;
+            var _0x2095fb = _0x4b269a;
+            for (var _0x44394e = _0x2095fb; _0x4b269a < _0x2303ab; _0x4b269a++) {
+                _0x44394e = (_0x44394e + 0x1) % 0x100;
+                _0x2095fb = (_0x2095fb + _0x2d6d3d[_0x44394e]) % 0x100;
+                let _0x2c49c7 = _0x2d6d3d[_0x44394e];
+                _0x2d6d3d[_0x44394e] = _0x2d6d3d[_0x2095fb];
+                _0x2d6d3d[_0x2095fb] = _0x2c49c7;
+                let _0x392ec0 = _0x2d6d3d[(_0x2d6d3d[_0x44394e] + _0x2d6d3d[_0x2095fb]) % 0x100];
+                _0x23a5aa += String[_0x53ac('0x7')](_0x2781f5[_0x4b269a]['charCodeAt'](0x0) ^ _0x392ec0);
+            }
+            if (_0x213ffb) {
+                return strToHexCharCode(_0x23a5aa);
+            }
+            return _0x23a5aa;
+        };
+
+        function strToHexCharCode(_0x500a82) {
+            if (_0x500a82 === '') return '';
+            var _0x2c964a = [];
+            for (var _0x5092ca = 0x0; _0x5092ca < _0x500a82['length']; _0x5092ca++) {
+                _0x2c964a['push'](_0x500a82['charCodeAt'](_0x5092ca)[_0x53ac('0xc')](0x10));
+            }
+            return _0x2c964a[_0x53ac('0x22')]('');
+        };
+
+        function hexCharCodeToStr(_0x4c67fd) {
+            var _0x3f58ff = _0x4c67fd[_0x53ac('0x11')]();
+            var _0x4ab9b8 = _0x3f58ff['substr'](0x0, 0x2)['toLowerCase']() === '0x' ? _0x3f58ff[_0x53ac('0x23')](0x2) : _0x3f58ff;
+            var _0x106372 = _0x4ab9b8['length'];
+            if (_0x106372 % 0x2 !== 0x0) {
+                return '';
+            }
+            var _0x51dc49;
+            var _0x5ecf2e = [];
+            for (var _0x5bc6c3 = 0x0; _0x5bc6c3 < _0x106372; _0x5bc6c3 = _0x5bc6c3 + 0x2) {
+                _0x51dc49 = parseInt(_0x4ab9b8[_0x53ac('0x23')](_0x5bc6c3, 0x2), 0x10);
+                _0x5ecf2e['push'](String['fromCharCode'](_0x51dc49));
+            }
+            return _0x5ecf2e['join']('');
+        };
+
+        function Base64DeCode(_0x2398da) {
+            var _0x456d51 = '';
+            var _0xed8c07, _0x14ba29, _0xeebe1f;
+            var _0x5b9a69, _0x29a5fd, _0x48214b, _0x415edd;
+            var _0x37b150 = 0x0;
+            _0x2398da = _0x2398da['replace'](/[^A-Za-z0-9\+\/\=]/g, '');
+            while (_0x37b150 < _0x2398da['length']) {
+                _0x5b9a69 = _keyStr['indexOf'](_0x2398da[_0x53ac('0x10')](_0x37b150++));
+                _0x29a5fd = _keyStr[_0x53ac('0xa')](_0x2398da['charAt'](_0x37b150++));
+                _0x48214b = _keyStr[_0x53ac('0xa')](_0x2398da[_0x53ac('0x10')](_0x37b150++));
+                _0x415edd = _keyStr[_0x53ac('0xa')](_0x2398da['charAt'](_0x37b150++));
+                _0xed8c07 = _0x5b9a69 << 0x2 | _0x29a5fd >> 0x4;
+                _0x14ba29 = (_0x29a5fd & 0xf) << 0x4 | _0x48214b >> 0x2;
+                _0xeebe1f = (_0x48214b & 0x3) << 0x6 | _0x415edd;
+                _0x456d51 = _0x456d51 + String['fromCharCode'](_0xed8c07);
+                if (_0x48214b != 0x40) {
+                    _0x456d51 = _0x456d51 + String[_0x53ac('0x7')](_0x14ba29);
+                }
+                if (_0x415edd != 0x40) {
+                    _0x456d51 = _0x456d51 + String['fromCharCode'](_0xeebe1f);
+                }
+            }
+            _0x456d51 = _utf8_decode(_0x456d51);
+            return _0x456d51;
+        };
+
+        function _utf8_decode(_0x5f20dd) {
+            var _0x2ce2ad = '';
+            var _0xb447f1 = 0x0;
+            var _0x2cbe44 = c1 = c2 = 0x0;
+            while (_0xb447f1 < _0x5f20dd[_0x53ac('0x13')]) {
+                _0x2cbe44 = _0x5f20dd['charCodeAt'](_0xb447f1);
+                if (_0x2cbe44 < 0x80) {
+                    _0x2ce2ad += String['fromCharCode'](_0x2cbe44);
+                    _0xb447f1++;
+                } else if (_0x2cbe44 > 0xbf && _0x2cbe44 < 0xe0) {
+                    c2 = _0x5f20dd['charCodeAt'](_0xb447f1 + 0x1);
+                    _0x2ce2ad += String['fromCharCode']((_0x2cbe44 & 0x1f) << 0x6 | c2 & 0x3f);
+                    _0xb447f1 += 0x2;
+                } else {
+                    c2 = _0x5f20dd[_0x53ac('0x26')](_0xb447f1 + 0x1);
+                    c3 = _0x5f20dd[_0x53ac('0x26')](_0xb447f1 + 0x2);
+                    _0x2ce2ad += String[_0x53ac('0x7')]((_0x2cbe44 & 0xf) << 0xc | (c2 & 0x3f) << 0x6 | c3 & 0x3f);
+                    _0xb447f1 += 0x3;
+                }
+            }
+            return _0x2ce2ad;
+        };
+
+        function login(_0x1a85fe, _0x4bf1ca = '', _0x47e037 = _0x53ac('0xf')) {
+            return new Promise(async (_0x13315e, _0x1e1e60) => {
+                try {
+                    const _0x484c3d = await machineCode();
+                    Object[_0x53ac('0x6')](appConfig, {
+                        'imei': _0x484c3d
+                    });
+                    const _0x1c819a = _0x53ac('0x2c') + _0x484c3d;
+                    const _0x52dcf9 = appConfig['uri'] + '/' + (Math['floor'](new Date()['getTime']() / 0x3e8) - 0x3) + '/' + appConfig['appid'] + '/' + _0x1a85fe + '?' + _0x1c819a;
+                    const _0x1aeb91 = await getDataByJsonP(_0x53ac('0x1b'), _0x52dcf9, _0x53ac('0x12'));
+                    let _0x282564 = rc4(appConfig['appsecret'], _0x1aeb91, ![]);
+                    var _0x374bd8;
+                    try {
+                        _0x374bd8 = JSON['parse'](Base64DeCode(_0x282564));
+                    } catch (_0x5ec010) {
+                        _0x1e1e60({
+                            'msg': '请检查秘钥是否正确'
+                        });
+                    }
+                    let _0x144236 = Math[_0x53ac('0x21')](new Date()[_0x53ac('0x25')]() / 0x3e8) - 0x3;
+                    if (!_0x374bd8['check'] || _0x374bd8['check'] != md5(_0x484c3d + _0x374bd8[_0x53ac('0x0')] + _0x374bd8[_0x53ac('0x1')])) {
+                        _0x374bd8[_0x53ac('0x20')] = _0x53ac('0x2b');
+                        _0x374bd8['msg'] = '签名校验失败';
+                        _0x1e1e60(_0x374bd8);
+                        return;
+                    } else if (_0x374bd8[_0x53ac('0x1')] - _0x144236 > 0x1e || _0x374bd8['api_time'] - _0x144236 < -0x1e) {
+                        _0x374bd8['code'] = _0x53ac('0x2e');
+                        _0x374bd8[_0x53ac('0x1f')] = _0x53ac('0x9');
+                        _0x1e1e60(_0x374bd8);
+                        return;
+                    }
+                    if (_0x374bd8['code'] == 0x4e20) {
+                        _0x13315e(_0x374bd8);
+                        return;
+                    }
+                    _0x1e1e60(_0x374bd8);
+                } catch (_0x3012be) {
+                    _0x1e1e60({
+                        'msg': _0x3012be
+                    });
+                }
+            });
+        }
+        const app = Vue[_0x53ac('0xd')]({
+            'data'() {
+                return {
+                    'result': [],
+                    'sw': !![],
+                    'ifshow': !![],
+                    'tabValue': '1',
+                    'Value1': '1',
+                    'checked': !![],
+                    'check': !![],
+                    'bscard': '',
+                    'bsgg': '暂无公告',
+                    'bsok': ![],
+                    'expires': '0000年0月0日\x2000:00:00'
+                };
+            },
+            'mounted'() {
+                if (typeof h5gg != _0x53ac('0x30')) {
+                    setWindowDrag(0x0, 0x0, 0x258, 0x166);
+                    setWindowRect(0x3c, 0x3c, 0x258, 0x166);
+                }
+            },
+            'methods': {
+                'getCard'() {
+                    this['bscard'] = localStorage[_0x53ac('0x28')]('wig_km');
+                },
+                async 'bsLogin'() {
+                    if (this['bscard']) {
+                        try {
+                            const {
+                                expires,
+                                new_code2
+                            } = await login(this['bscard']);
+                            this['expires'] = expires;
+                            vant[_0x53ac('0x4')]('success');
+                            localStorage['setItem'](_0x53ac('0x19'), this[_0x53ac('0x27')]);
+                            console['log'](_0x53ac('0x5'));
+                            this['bsok'] = !![];
+                        } catch (_0x5e5dad) {
+                            console['log'](_0x5e5dad['msg']);
+                            vant[_0x53ac('0x4')](_0x5e5dad[_0x53ac('0x1f')]);
+                            this[_0x53ac('0x2f')] = ![];
+                        }
+                    } else {
+                        vant['showToast']('Please\x20enter\x20the\x20key');
+                    }
+                },
+                'changeTab'(_0x18ca6f) {
+                    this['tabValue'] = _0x18ca6f;
+                }
+            }
+        });
+        app[_0x53ac('0x1c')](vant);
+        app[_0x53ac('0x1c')](vant[_0x53ac('0x31')]);
+        app[_0x53ac('0x1d')]('#app');
+    </script>
+    <script>
+        setButtonImage('https://w1nterrrrr.github.io/ios/logo2.png')
+    </script>
+    <script src="https://w1nterrrrr.github.io/ios/bg.js"></script>
+    <script src="https://w1nterrrrr.github.io/ios/bg1.js"></script>
+    <script src="https://w1nterrrrr.github.io/ios/link.js"></script>
+
+
+    <script>
+        // 獲取所有音頻元素
+        const audios = {
+            audio1: document.getElementById('audio1'),
+            audio2: document.getElementById('audio2'),
+            audio3: document.getElementById('audio3')
+        };
+
+        // 播放/暫停音樂的函數
+        function toggleAudio(id) {
+            const audio = audios[id];
+            if (audio.paused) {
+                // 播放音樂
+                audio.play();
+            } else {
+                // 暫停音樂
+                audio.pause();
+            }
+        }
+    </script>
+     <script>
+        function shareMusic() {
+            const musicUrl = "sound/1.MP3" ; // 音樂文件的 URL
+            const shareText = '聽聽這首好聽的音樂！';
+
+            if (navigator.share) {
+                navigator.share({
+                    title: '分享音樂',
+                    text: shareText,
+                    url: musicUrl,
+                })
+                .then(() => console.log('分享成功'))
+                .catch(error => console.log('分享失敗', error));
+            } else {
+                alert('您的瀏覽器不支持分享功能。');
+            }
+        }
+    </script>
+</body>
+
+</html>
