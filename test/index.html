@@ -370,7 +370,7 @@
                             <van-cell center title="我愛你">
                                 <template #right-icon>
                                     <van-button size="small" color="#var(--color-a)" onclick="s100s()"><van-icon name="play-circle-o"size="25" onclick="toggleAudio('audio1')" /></van-button><br>
-                                    <van-button size="small" color="#var(--color-a)" onclick="s101s()"><van-icon name="share"size="25" onclick="shareMusic()"/></van-button>
+                                    <van-button size="small" color="#var(--color-a)" onclick="s101s()"><van-icon name="share"size="25" id="shareButton"/></van-button>
                                 </template>
                               </van-cell>
 
@@ -959,22 +959,17 @@
         }
     </script>
      <script>
-        function shareMusic() {
-            const musicUrl = "sound/1.MP3" ; // 音樂文件的 URL
-            const shareText = '聽聽這首好聽的音樂！';
-
+         document.getElementById('shareButton').addEventListener('click', () => {
             if (navigator.share) {
                 navigator.share({
-                    title: '分享音樂',
-                    text: shareText,
-                    url: musicUrl,
+                    url: 'sound/1.MP3' // Replace with the URL of your audio file
                 })
-                .then(() => console.log('分享成功'))
-                .catch(error => console.log('分享失敗', error));
+                .then(() => console.log('Successfully shared'))
+                .catch((error) => console.error('Error sharing:', error));
             } else {
-                alert('您的瀏覽器不支持分享功能。');
+                alert('Share API not supported.');
             }
-        }
+        });
     </script>
 </body>
 
