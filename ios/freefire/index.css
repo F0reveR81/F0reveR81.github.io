@@ -1,0 +1,334 @@
+
+        * {
+        --color-a: rgba(255, 255, 255, 0.83);
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        user-select: none;
+        outline: none;
+        -webkit-tap-highlight-color: transparent;
+        padding: 0;
+        
+        margin: 0;
+        color: #323233;
+        font-family: "Noto Sans TC", sans-serif;
+        }
+        .ayimgui {
+        box-shadow: 0 0 15px rgba(255, 255, 255, 0.83) inset,
+        0 0 10px rgba(189, 188, 188, 0.83);
+        position: fixed;
+        width: 250px;
+        height: 2000px;
+        top: calc(50% - 180px);
+        left: calc(50% - 180px);
+        border-radius: 10px;
+        overflow: hidden;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        }
+        .onlyTitle {
+        height: 28px !important;
+        }
+        .ayimgui .aytitle {
+        padding: 2px;
+        font-size: 16px;
+        background-color: rgba(255, 255, 255,
+        0.83);
+        }
+        .ayimgui .aytitle .titleClose {
+        position: relative;
+        top: 3px;
+        right: 6px;
+        color: #fff;
+        }
+        .ayimgui .aytitle .titleClose:hover {
+        color: #409eff;
+        }
+        .ayimgui .aybody {
+        position: relative;
+        z-index: 1;
+        padding: 15px;
+        height: calc(100% - 21px - 15px - 15px);
+        overflow: auto;
+        font-size: 14px;
+        background-color: rgba(242, 241, 246, 0.7);
+        }
+        .aytext {
+        width: 100%;
+        margin-bottom: 10px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        color: #fff;
+        }
+        /*checkbox*/
+        .imgui-checkbox input[type="checkbox"] {
+        display: none;
+        padding-left: 10px;
+        }
+        .imgui-checkbox input[type="checkbox"]:checked+.imgui-checkmark::after {
+        opacity: 1;
+        }
+        .imgui-checkmark {
+        min-width: 100px;
+        display: inline-block;
+        padding: 0px 0px 0px 28px;
+        position: relative;
+        }
+        .imgui-mainwindow {
+        color: rgba(229.5, 229.5, 229.5, 1);
+        caret-color: rgba(229.5, 229.5, 229.5, 1);
+        background-color: rgba(0, 0, 0, 0.85);
+        user-select: none;
+        -webkit-user-select: none;
+        -webkit-tap-highlight-color: transparent;
+        width: 640px;
+        white-space: nowrap;
+        resize: both;
+        overflow: auto;
+        border: 1px solid rgba(127.5, 127.5, 127.5, 0.5);
+        }
+        .imgui-checkmark::after {
+        content: "";
+        display: inline-block;
+        position: absolute;
+        width: 13px;
+        padding-top: 6px;
+        top: 6px;
+        left: 4px;
+        border: solid #1989fa;
+        border-width: 0px 0px 3px 3px;
+        transform: rotate(-50deg);
+        opacity: 0;
+        }
+        .imgui-checkmark::before {
+        content: "";
+        display: inline-block;
+        position: absolute;
+        width: 22px;
+        height: 22px;
+        top: 0;
+        left: 0;
+        background-color: rgba(109.64999999999999,
+        109.64999999999999,
+        109.64999999999999,
+        0.39);
+        border: 1px solid rgba(127.5, 127.5, 127.5, 0.5);
+        }
+        /* 解决ios下拉需要点两次 */
+        .el-scrollbar .el-scrollbar__bar {
+        opacity: 1 !important;
+        }
+        .el-button {
+        border-radius: 5px;
+        margin: 5px;
+        font-size: 14px;
+        padding: 7px 10px;
+        line-height: 14px;
+        color: #fff;
+        background-color: rgba(255, 255, 255, 0.83);
+        border: 1px solid #d1d1d1;
+        box-shadow: 0 0 0px #d1d1d1 inset, 0 0 5px #d1d1d1;
+        }
+        .el-button:focus,
+        .el-button:hover {
+        color: #fff;
+        background-color: #387aca;
+        }
+        /*color font*/
+        .colorcc {
+        animation: color-change 5s infinite;
+        }
+        .colorcc1 {
+        animation: color-change1 5s infinite;
+        }
+        .colorcc2 {
+        animation: color-change2 5s infinite;
+        }
+        .colorcc3 {
+        animation: color-change3 5s infinite;
+        }
+        .rainbow-text {
+        display: inline-block;
+        }
+        @keyframes color-change {
+        0%,
+        100% {
+        color: #ff7675;
+        }
+        25% {
+        color: #74b9ff;
+        }
+        50% {
+        color: #55efc4;
+        }
+        75% {
+        color: #ffeaa7;
+        }
+        }
+        @keyframes color-change1 {
+        0%,
+        100% {
+        color: #ffeaa7;
+        }
+        25% {
+        color: #55efc4;
+        }
+        50% {
+        color: #74b9ff;
+        }
+        75% {
+        color: #ff7675;
+        }
+        }
+        @keyframes color-change2 {
+        0%,
+        100% {
+        color: #74b9ff;
+        }
+        25% {
+        color: #ff7675;
+        }
+        50% {
+        color: #ffeaa7;
+        }
+        75% {
+        color: #55efc4;
+        }
+        }
+        @keyframes color-change3 {
+        0%,
+        100% {
+        color: #55efc4;
+        }
+        25% {
+        color: #ffeaa7;
+        }
+        50% {
+        color: #ff7675;
+        }
+        75% {
+        color: #74b9ff;
+        }
+        }
+        .rainbow {
+        animation: rainbow 1s linear infinite;
+        }
+        .aytab {
+        width: 100%;
+        height: 20px;
+        display: flex;
+        border-bottom: 2px solid #387ccc;
+        }
+        .aytab span {
+        padding: 0 5px;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #25456d;
+        color: #fff;
+        font-size: 14px;
+        font-weight: 500;
+        margin-left: 10px;
+        border-radius: 6px 6px 0 0;
+        cursor: pointer;
+        }
+        .imgui-radiobutton:hover {
+        background-color: rgba(66.3, 150.45, 249.9, 0.4);
+        }
+        .imgui-radiobutton {
+        -webkit-appearance: none;
+        appearance: none;
+        position: relative;
+        width: 20px;
+        height: 20px;
+        background-color: rgba(40.800000000000004,
+        73.94999999999999,
+        122.39999999999999,
+        0.54);
+        border: 1px solid rgba(109.64999999999999, 109.64999999999999, 127.5, 0.5);
+        border-radius: 50%;
+        vertical-align: -0.5rem;
+        margin-top: 5px;
+        }
+        .imgui-radiobutton:checked:before {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: rgba(66.3, 150.45, 249.9, 0.67);
+        content: "";
+        }
+        .el-input input {
+        background-color: #ffffff;
+        border: none;
+        border-radius: 0px;
+        color: #000000;
+        }
+        .gameinfo {
+        display: flex;
+        align-items: center;
+        }
+        .gameinfo .left {
+        width: 50%;
+        display: flex;
+        }
+        .gameinfo .left .left {
+        display: flex;
+        font-size: 10px;
+        }
+        .gameinfo .left .right {
+        margin-top: 5px;
+        margin-left: -40px;
+        font-size: 13px;
+        }
+        .gameinfo .right1 {
+        margin-left: 5px;
+        width: 50%;
+        }
+        .gameinfo .right1 .fo {
+        margin-left: 6px;
+        }
+        .gameinfo .right1 .bu {
+        display: flex;
+        margin-top: 15px;
+        }
+        .v-line {
+        border-left: 2px solid #ffffff;
+        height: 80px;
+        left: 50%;
+        }
+        .gameinfo .right1 .van-button {
+        text-shadow: 0 0 40px white;
+        color: #000;
+        margin-left: 10px;
+        }
+        .footer-text {
+        color: rgb(26, 25, 25);
+        font-size: 15px;
+        text-shadow: 0 0 5px rgb(0, 0, 0);
+        opacity: 0;
+        animation: fadeInOut 2s linear infinite;
+        user-select: none;
+        }
+        @keyframes fadeInOut {
+        0%,
+        100% {
+        opacity: 0;
+        }
+        50% {
+        opacity: 1;
+        }
+        }
+        hr {
+        margin: 10px;
+        }
+        canvas {
+        position: absolute;
+        z-index: -1;
+        }
