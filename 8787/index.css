@@ -1,8 +1,11 @@
 html{
   
-  background: #C9FFBF;  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to right, #FFAFBD, #C9FFBF);  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to right, #FFAFBD, #C9FFBF); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+  background-image: url('1.jpg');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
   
     height: 100%;
     display: flex;
@@ -17,7 +20,7 @@ html{
   width: 600px;
 height: 180px;
   margin: 50px; 
-
+  border:#fff;
   border-radius:  5px; ;
 }
 .van-button__content {
@@ -54,7 +57,7 @@ filter: blur(5px);
 width: calc(100% + 4px);
 height: calc(100% + 4px);
 animation: glowing 20s linear infinite;
-opacity: 0;
+opacity: 100;
 transition: opacity .3s ease-in-out;
 border-radius: 10px;
 }
