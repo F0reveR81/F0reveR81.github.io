@@ -6,11 +6,11 @@
       "name": "YouTube++",
       "bundleIdentifier": "com.google.ios.youtube",
       "developerName": "Google",
-      "version": "17.40.5",
+      "version": "0.0.1",
       "versionDate": "2025-09-20T12:00:00Z",
       "versionDescription": "去廣告、後台播放",
-      "downloadURL": "https://drive.google.com/uc?export=download&id=1ZZT0I3REXCuSPRTizPZHJNtvAyBRRMrV",
-      "iconURL": "https://f0rever81.github.io/ipas/ipa/youtube++.ipa",
+      "downloadURL": "https://storage.googleapis.com/my-ipa-bucket/ipa/youtube%2B%2B.ipa",
+      "iconURL": "https://f0rever81.github.io/ipas/icon/youtube++.png",
       "localizedDescription": "修改版 YouTube，支援後台播放。",
       "size": 303060847
     }
