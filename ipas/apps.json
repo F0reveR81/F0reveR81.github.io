@@ -1,18 +1,90 @@
 {
-  "name": "我的全能簽源",
-  "identifier": "com.yoursource",
+  "name": "DITTO軟件源",
+  "identifier": "com.ditto",
   "apps": [
     {
-      "name": "YouTube++",
+      "name": "傳說對決 A版本",
+      "bundleIdentifier": "com.garena.game.kgtw11",
+      "developerName": "Garena",
+      "version": "1.59.1.1",
+      "versionDate": "2025-09-20T12:00:00Z",
+      "versionDescription": "A Version",
+      "downloadURL": "https://storage.googleapis.com/my-ipa-bucket/ipa/aov%20a.ipa",
+      "iconURL": "https://f0rever81.github.io/ipas/icons/aov.png",
+      "localizedDescription": " ",
+      "size": 213699796
+    },
+    {
+      "name": "傳說對決 B版本",
+      "bundleIdentifier": "com.garena.game.kgtwb915",
+      "developerName": "Garena",
+      "version": "1.59.1.1",
+      "versionDate": "2025-09-20T12:00:00Z",
+      "versionDescription": "B Version",
+      "downloadURL": "https://storage.googleapis.com/my-ipa-bucket/ipa/aov%20B.ipa",
+      "iconURL": "https://f0rever81.github.io/ipas/icons/aov.png",
+      "localizedDescription": " ",
+      "size": 223332436
+    },
+    {
+      "name": "FreeFire螢石",
+      "bundleIdentifier": "com.dts.freefireth2",
+      "developerName": "Garena",
+      "version": "1.5.2",
+      "versionDate": "2025-09-20T12:00:00Z",
+      "versionDescription": "FreeFire Fluorite",
+      "downloadURL": "https://storage.googleapis.com/my-ipa-bucket/ipa/FF_1.114.1_1.5.2.ipa",
+      "iconURL": "https://f0rever81.github.io/ipas/icons/ff.png",
+      "localizedDescription": " ",
+      "size": 1211794878
+    },
+    {
+      "name": "8 Ball Pool",
+      "bundleIdentifier": "com.miniclip.8ballpoolmult",
+      "developerName": "star",
+      "version": "0.3.7",
+      "versionDate": "2025-09-20T12:00:00Z",
+      "versionDescription": "STAR8BP",
+      "downloadURL": "https://storage.googleapis.com/my-ipa-bucket/ipa/youtube%2B%2B.ipa",
+      "iconURL": "https://storage.googleapis.com/my-ipa-bucket/ipa/STAR8BP_3.7.ipa",
+      "localizedDescription": " ",
+      "size": 138397279
+    },
+    {
+      "name": "YouTube破解版",
       "bundleIdentifier": "com.google.ios.youtube",
       "developerName": "Google",
-      "version": "0.0.2",
+      "version": "0.0.1",
       "versionDate": "2025-09-20T12:00:00Z",
-      "versionDescription": "去廣告、後台播放",
+      "versionDescription": "去廣告、後台播放..等",
       "downloadURL": "https://storage.googleapis.com/my-ipa-bucket/ipa/youtube%2B%2B.ipa",
-      "iconURL": "https://f0rever81.github.io/ipas/icons/youtube++.png",
-      "localizedDescription": "修改版 YouTube，支援後台播放。",
+      "iconURL": "https://f0rever81.github.io/ipas/icons/yt.png",
+      "localizedDescription": " ",
       "size": 303060847
+    },
+    {
+      "name": "Tiktok破解版",
+      "bundleIdentifier": "com.zhiliaoapp.musically",
+      "developerName": "Tiktok",
+      "version": "0.0.1",
+      "versionDate": "2025-09-20T12:00:00Z",
+      "versionDescription": "下載影片無浮水印..等",
+      "downloadURL": "https://storage.googleapis.com/my-ipa-bucket/ipa/TikTok_41.7.0_Plus%40%E5%B7%A8%E9%AD%94%E5%95%86%E5%BA%97.ipa",
+      "iconURL": "https://f0rever81.github.io/ipas/icons/tk.png",
+      "localizedDescription": " ",
+      "size": 357456492
+    },
+    {
+      "name": "Spotify破解版",
+      "bundleIdentifier": "com.spotify.client",
+      "developerName": "Spotify",
+      "version": "0.0.1",
+      "versionDate": "2025-09-20T12:00:00Z",
+      "versionDescription": "去廣告..等",
+      "downloadURL": "https://storage.googleapis.com/my-ipa-bucket/ipa/Spotify-Pro_9.0.80.ipa",
+      "iconURL": "https://f0rever81.github.io/ipas/icons/spo.png",
+      "localizedDescription": " ",
+      "size": 89477216 
     }
   ]
 }
