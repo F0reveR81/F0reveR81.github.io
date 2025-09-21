@@ -1,0 +1,18 @@
+{
+  "name": "我的全能簽源",
+  "identifier": "com.yoursource",
+  "apps": [
+    {
+      "name": "YouTube++",
+      "bundleIdentifier": "com.google.ios.youtube",
+      "developerName": "Google",
+      "version": "17.40.5",
+      "versionDate": "2025-09-20T12:00:00Z",
+      "versionDescription": "去廣告、後台播放",
+      "downloadURL": "https://drive.google.com/uc?export=download&id=1ZZT0I3REXCuSPRTizPZHJNtvAyBRRMrV",
+      "iconURL": "https://f0rever81.github.io/ipas/ipa/youtube++.ipa",
+      "localizedDescription": "修改版 YouTube，支援後台播放。",
+      "size": 303060847
+    }
+  ]
+}
